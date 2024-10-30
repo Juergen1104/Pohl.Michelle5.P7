@@ -1,3 +1,4 @@
+// Michelle Pohl
 public class Letters {
 
     // Aufgabenteil (a)
@@ -57,23 +58,19 @@ public class Letters {
             }
         }
 
-
         System.out.println("Word 1: " + w1);
         System.out.println("Word 2: " + w2);
         System.out.println("Shared letters: " + sharedLetters);            // Ausgabe ergänzen!
         System.out.println("Unique letters of word 1: " + uniqueLettersW1);  // Ausgabe ergänzen!
         System.out.println("Unique letters of word 2: " + uniqueLettersW2);  // Ausgabe ergänzen!
-
     }
 
     public static void main(String[] args) {
         if (args.length == 2) {
             // Aufgabenteil (d): Aufruf von checkSharedLetters ergänzen
-
             String word1 = args[0].toLowerCase();
             String word2 = args[1].toLowerCase();
             checkSharedLetters(word1, word2);
-
         } else {
             System.out.println("Call: \njavaSharedLetters <word1> <word2>");
         }
