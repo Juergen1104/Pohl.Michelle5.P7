@@ -39,14 +39,12 @@ public class MagicSquare {
 
     // 1
     public void printSquare() {
-
         for (Integer[] row : mSq) {
             for (Integer value : row) {
                 System.out.print(String.format("%3d", value));
             }
             System.out.println();
         }
-
     }
 
     // 1
@@ -60,6 +58,9 @@ public class MagicSquare {
 
     // 3
     public boolean checkSquare() {
+
+        Integer[] arr1 = new Integer[this.n];
+        Integer[] arr2 = new Integer[this.n];
 
         int targetSum = sumArr(mSq[0]);
 
@@ -79,49 +80,39 @@ public class MagicSquare {
             }
         }
 
-        Integer[] diagonal1 = new Integer[n];
-        Integer[] diagonal2 = new Integer[n];
         for (int i = 0; i < n; i++) {
-            diagonal1[i] = mSq[i][i];
-            diagonal2[i] = mSq[i][n - i - 1];
+            arr1[i] = mSq[i][i];
+            arr2[i] = mSq[i][n - i - 1];
         }
-        return sumArr(diagonal1) == targetSum && sumArr(diagonal2) == targetSum;
-
-//        Integer[] arr1 = new Integer[this.n];
-//        Integer[] arr2 = new Integer[this.n];
-//
-//        return false; // Dummy Return
+        return sumArr(arr1) == targetSum && sumArr(arr2) == targetSum;
     }
 
     // 2
     public boolean checkSquare2() {
 
-        // Zielwertebereich [1, n^2]
         int maxVal = n * n;
 
-        // Prüfe für jede Zahl von 1 bis n^2, ob sie in mSq enthalten ist
         for (int i = 1; i <= maxVal; i++) {
             Integer target = i;
-            boolean found = false;
+            boolean gefunden = false;
 
-            // Durchsuche mSq nach der Zahl target
             for (int row = 0; row < n; row++) {
                 for (int col = 0; col < n; col++) {
                     if (mSq[row][col].equals(target)) {
-                        found = true;
-                        break; // Zahl gefunden, nächste Zahl prüfen
+                        gefunden = true;
+                        break;
                     }
                 }
-                if (found) break; // Falls gefunden, verlasse die Zeile
+                if (gefunden) break;
             }
 
-            // Wenn die Zahl nicht gefunden wurde, ist mSq kein magisches Quadrat
-            if (!found) {
+            // Nicht gefunden
+            if (!gefunden) {
                 return false;
             }
         }
 
-        // Alle Zahlen von 1 bis n^2 wurden gefunden
+        // Alle Zahlen gefunden
         return true;
 
     }
