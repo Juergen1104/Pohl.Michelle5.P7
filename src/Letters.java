@@ -18,12 +18,12 @@ public class Letters {
 
         int position = 0;
 
-        // Suche nach der Position zum Einfügen des Zeichens c
+        // Suche nach der Position
         while (position < sBuf.length() && sBuf.charAt(position) < c) {
             position++;
         }
 
-        // Füge das Zeichen c an der gefundenen Position ein
+        // Füge  Zeichen ein
         sBuf.insert(position, c);
 
     }
@@ -38,21 +38,17 @@ public class Letters {
         for (int i = 0; i < w1.length(); i++) {
             char c = w1.charAt(i);
 
-            // Wenn das Zeichen in beiden Wörtern vorkommt und noch nicht in sharedLetters ist
             if (contains(w2, c) && !contains(sharedLetters, c)) {
                 addLetter(sharedLetters, c);
             }
-            // Wenn das Zeichen nur in word1 vorkommt und noch nicht in uniqueLettersWord1 ist
             else if (!contains(w2, c) && !contains(uniqueLettersW1, c)) {
                 addLetter(uniqueLettersW1, c);
             }
         }
 
-        // Prüfe jedes Zeichen im zweiten Wort
         for (int i = 0; i < w2.length(); i++) {
             char c = w2.charAt(i);
 
-            // Wenn das Zeichen nur in word2 vorkommt und noch nicht in uniqueLettersWord2 ist
             if (!contains(w1, c) && !contains(uniqueLettersW2, c)) {
                 addLetter(uniqueLettersW2, c);
             }
